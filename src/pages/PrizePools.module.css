@@ -1,0 +1,648 @@
+/* ══════════════════════════════════════════
+   PRIZE POOLS PAGE — Poker-style dark luxury
+══════════════════════════════════════════ */
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #1A1714 0%, #231F1B 60%, #1A2015 100%);
+  padding-top: 72px;
+  padding-bottom: 60px;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 40px 24px 0;
+}
+
+/* ── Page Header ─────────────────────────── */
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.pageSubtitle {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.pageTitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 38px;
+  font-weight: 800;
+  color: #F5F0E8;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.pageDesc {
+  color: #9A9080;
+  font-size: 15px;
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.houseStats {
+  display: flex;
+  gap: 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,168,67,0.2);
+  border-radius: 12px;
+  padding: 20px 28px;
+  flex-shrink: 0;
+}
+
+.houseStat {
+  text-align: center;
+}
+
+.houseStatVal {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.houseStatLabel {
+  font-size: 11px;
+  color: #7A7060;
+  margin-top: 2px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Tabs ────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 32px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  padding: 5px;
+  width: fit-content;
+}
+
+.tab {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: #9A9080;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.tab:hover {
+  color: #F5F0E8;
+  background: rgba(255,255,255,0.06);
+}
+
+.tabActive {
+  background: var(--gold) !important;
+  color: #1A1714 !important;
+}
+
+/* ── Filters ─────────────────────────────── */
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.filterLabel {
+  color: #7A7060;
+  font-size: 13px;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.filterBtn {
+  padding: 6px 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  background: transparent;
+  color: #9A9080;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.filterBtn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.filterActive {
+  background: rgba(212,168,67,0.15) !important;
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
+}
+
+/* ── Tournament Grid ─────────────────────── */
+.tournamentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* ── Tournament Card ─────────────────────── */
+.tCard {
+  background: linear-gradient(145deg, #2A2520 0%, #232019 100%);
+  border: 1px solid rgba(212,168,67,0.18);
+  border-radius: 14px;
+  padding: 22px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.tCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212,168,67,0.4);
+}
+
+.tCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.tCardLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotActive   { background: #4CAF50; box-shadow: 0 0 6px rgba(76,175,80,0.6); }
+.dotUpcoming { background: var(--gold); }
+
+.tCardName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #F5F0E8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tCardBuyIn {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.dollarSign {
+  font-size: 12px;
+  vertical-align: super;
+}
+
+.buyInLabel {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: #7A7060;
+}
+
+.tCardMeta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.metaPill {
+  padding: 3px 10px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+  font-size: 12px;
+  color: #9A9080;
+}
+
+.prizePoolRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 12px;
+  padding: 14px;
+  background: rgba(212,168,67,0.08);
+  border: 1px solid rgba(212,168,67,0.15);
+  border-radius: 10px;
+}
+
+.prizePoolLabel {
+  font-size: 11px;
+  color: #9A9080;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.prizePoolAmount {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.rakeInfo {
+  text-align: right;
+}
+
+.rakeLabel {
+  font-size: 11px;
+  color: #7A7060;
+  margin-bottom: 2px;
+}
+
+.rakeAmount {
+  font-size: 15px;
+  font-weight: 700;
+  color: #9A9080;
+}
+
+.fillBar {
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  margin-bottom: 4px;
+  overflow: hidden;
+}
+
+.fillBarInner {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green) 0%, var(--gold) 100%);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.fillLabel {
+  font-size: 11px;
+  color: #7A7060;
+  margin-bottom: 12px;
+}
+
+.prizesToggle {
+  background: none;
+  border: none;
+  color: #7A9080;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 8px;
+  font-family: 'DM Sans', sans-serif;
+  transition: color 0.15s;
+}
+.prizesToggle:hover { color: var(--gold); }
+
+.prizesList {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prizeRow {
+  display: grid;
+  grid-template-columns: 70px 1fr 70px;
+  align-items: center;
+  gap: 8px;
+}
+
+.prizeFirst .prizeAmt {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.prizePlace {
+  font-size: 12px;
+  color: #9A9080;
+}
+
+.prizeBar {
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.prizeBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, #4A7C59, var(--gold));
+  border-radius: 3px;
+}
+
+.prizeAmt {
+  font-size: 13px;
+  font-weight: 600;
+  color: #C0B090;
+  text-align: right;
+}
+
+.tCardActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* ── Challenges ──────────────────────────── */
+.challengesIntro {
+  margin-bottom: 20px;
+}
+
+.pokerNote {
+  background: rgba(212,168,67,0.08);
+  border: 1px solid rgba(212,168,67,0.2);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #C0A860;
+  font-size: 14px;
+}
+
+.challengesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.challengeCard {
+  background: linear-gradient(145deg, #252120 0%, #1E1C18 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 18px;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+
+.challengeCard:hover {
+  border-color: rgba(212,168,67,0.35);
+  transform: translateY(-2px);
+}
+
+.challengeTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.challengerInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.challengerAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.challengerName {
+  font-size: 14px;
+  font-weight: 700;
+  color: #F0EAE0;
+}
+
+.challengerRating {
+  font-size: 12px;
+  color: #7A7060;
+}
+
+.wagerBadge {
+  background: rgba(212,168,67,0.15);
+  border: 1px solid rgba(212,168,67,0.3);
+  border-radius: 8px;
+  padding: 6px 12px;
+  text-align: center;
+}
+
+.wagerAmount {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.wagerLabel {
+  font-size: 10px;
+  color: #9A8060;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.challengeMeta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.metaItem {
+  font-size: 12px;
+  color: #8A8070;
+}
+
+.payoutInfo {
+  font-size: 12px;
+  color: #7A9060;
+  background: rgba(76,124,89,0.1);
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-bottom: 12px;
+}
+
+/* ── Create Challenge ────────────────────── */
+.createSection {
+  max-width: 600px;
+}
+
+.authGate {
+  text-align: center;
+  padding: 60px 40px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+}
+
+.authGateIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.authGate h2 {
+  color: #F0EAE0;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.authGate p {
+  color: #7A7060;
+  margin-bottom: 24px;
+}
+
+.authGateActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.createForm {
+  background: linear-gradient(145deg, #252120, #1E1C18);
+  border: 1px solid rgba(212,168,67,0.2);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.createTitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px;
+  color: #F0EAE0;
+  margin-bottom: 24px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8A8070;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.wagerInput {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: 700;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.wagerInput input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: 700;
+  width: 100%;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.wagerPresets {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.wagerPreset {
+  padding: 4px 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  background: transparent;
+  color: #8A8070;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.12s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.wagerPreset:hover, .wagerPresetActive {
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
+  background: rgba(212,168,67,0.1) !important;
+}
+
+.select {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #F0EAE0;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+}
+
+.createSummary {
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #9A9080;
+}
+
+.summaryRow strong {
+  color: #C0B090;
+}
+
+.rakeRow strong {
+  color: #C07060;
+}
+
+.winRow {
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-weight: 700;
+  color: #F0EAE0;
+}
+
+.winAmount {
+  color: var(--gold) !important;
+  font-size: 16px;
+}

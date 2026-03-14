@@ -1,0 +1,108 @@
+.page { padding-top: 56px; min-height: 100vh; background: var(--surface-2); }
+.container { max-width: 1200px; margin: 0 auto; padding: 48px 40px; }
+.header { margin-bottom: 8px; }
+.headerDesc { font-size: 15px; color: var(--text-muted); margin-top: 4px; margin-bottom: 28px; font-weight: 300; }
+
+.filters { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+.filterBtn {
+  font-size: 13px; font-weight: 600;
+  padding: 8px 18px; border-radius: 20px;
+  border: 1.5px solid var(--border); color: var(--text-muted);
+  cursor: pointer; transition: all var(--t); background: var(--surface);
+}
+.filterBtn:hover { border-color: var(--green); color: var(--green); background: var(--green-pale); }
+.filterActive { border-color: var(--green); background: var(--green-pale); color: var(--green-deeper); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.tCard { transition: all var(--t); }
+.tCardTop { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.tFormat {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em;
+}
+.tName {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 20px; font-weight: 700;
+  color: var(--text-primary); letter-spacing: -0.02em; margin-bottom: 8px;
+}
+.tControl { margin-bottom: 16px; }
+.tControlBadge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 600;
+  padding: 3px 10px; background: var(--surface-3);
+  border: 1px solid var(--border); border-radius: var(--r);
+  color: var(--text-secondary);
+}
+.tMeta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.tMetaItem { }
+.tMetaLabel { display: block; font-size: 11px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; font-weight: 600; }
+.tMetaVal { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.tProgress { margin-bottom: 20px; }
+.tProgressBar { height: 4px; background: var(--border-light); border-radius: 2px; overflow: hidden; margin-bottom: 4px; }
+.tProgressFill { height: 100%; background: var(--green); border-radius: 2px; transition: width 0.4s; }
+.tProgressLabel { font-size: 11px; color: var(--text-faint); }
+.tActions { display: flex; gap: 8px; }
+
+/* ── Extended tournament styles ── */
+.state { padding: 60px 0; text-align: center; color: var(--text-muted); font-size: 15px; }
+.state button { margin-left: 8px; color: var(--green); background: none; border: none; cursor: pointer; font-size: 15px; }
+
+.tCardTopRight { display: flex; align-items: center; gap: 6px; }
+.privateBadge { font-size: 12px; }
+.tDesc { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.4; }
+.tRatingGate { font-size: 11px; font-weight: 600; padding: 2px 7px; background: var(--surface-3); border: 1px solid var(--border); border-radius: var(--r); color: var(--text-muted); margin-left: 6px; }
+
+/* ── Create modal ── */
+.modalForm { display: flex; flex-direction: column; gap: 16px; }
+.formError { background: #3d1f1f; border: 1px solid #c0392b; color: #ff6b6b; padding: 10px 14px; border-radius: var(--r); font-size: 13px; }
+.formGroup { display: flex; flex-direction: column; gap: 4px; }
+.formRow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; }
+.input { background: var(--surface-3); border: 1px solid var(--border); border-radius: var(--r); padding: 8px 12px; color: var(--text-primary); font-size: 14px; outline: none; transition: border-color var(--t); }
+.input:focus { border-color: var(--green); }
+.select { background: var(--surface-3); border: 1px solid var(--border); border-radius: var(--r); padding: 8px 12px; color: var(--text-primary); font-size: 14px; outline: none; cursor: pointer; }
+.textarea { background: var(--surface-3); border: 1px solid var(--border); border-radius: var(--r); padding: 8px 12px; color: var(--text-primary); font-size: 14px; outline: none; resize: vertical; font-family: inherit; }
+.fieldError { font-size: 12px; color: #ff6b6b; }
+.checkRow { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary); cursor: pointer; }
+.modalActions { display: flex; justify-content: flex-end; gap: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+.formatCards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.formatCard { padding: 10px 12px; border: 1.5px solid var(--border); border-radius: var(--r); cursor: pointer; transition: all var(--t); }
+.formatCard:hover { border-color: var(--green); }
+.formatCardActive { border-color: var(--green); background: var(--green-pale); }
+.formatCardName { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 2px; }
+.formatCardDesc { font-size: 11px; color: var(--text-muted); }
+
+/* ── Detail modal ── */
+.detailModal { display: flex; flex-direction: column; gap: 16px; }
+.detailTopRow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.detailDesc { font-size: 14px; color: var(--text-muted); line-height: 1.5; margin: 0; }
+.detailMeta { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; padding: 14px; background: var(--surface-3); border-radius: var(--r); }
+.detailTabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); }
+.detailTab { padding: 8px 16px; font-size: 13px; font-weight: 600; color: var(--text-muted); background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all var(--t); }
+.detailTab:hover { color: var(--text-primary); }
+.detailTabActive { color: var(--green); border-bottom-color: var(--green); }
+.detailActions { display: flex; justify-content: flex-end; gap: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+.playerList { display: flex; flex-direction: column; gap: 4px; max-height: 280px; overflow-y: auto; }
+.playerListTitle { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
+.playerRow { display: flex; align-items: center; justify-content: space-between; padding: 6px 8px; border-radius: var(--r); background: var(--surface-3); }
+.playerRating { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+.emptyMsg { color: var(--text-faint); font-size: 14px; padding: 20px 0; text-align: center; }
+
+/* ── Standings ── */
+.standingsTable { display: flex; flex-direction: column; gap: 4px; max-height: 300px; overflow-y: auto; }
+.standingRow { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: var(--surface-3); border-radius: var(--r); }
+.standingRank { font-size: 14px; font-weight: 700; width: 28px; text-align: center; flex-shrink: 0; }
+.standingScore { margin-left: auto; font-weight: 700; color: var(--green); font-size: 14px; flex-shrink: 0; }
+.standingRecord { font-size: 11px; color: var(--text-faint); flex-shrink: 0; }
+
+/* ── Rounds ── */
+.roundsList { display: flex; flex-direction: column; gap: 12px; max-height: 320px; overflow-y: auto; }
+.roundBlock { }
+.roundTitle { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+.roundGame { display: flex; align-items: center; gap: 8px; padding: 6px 8px; background: var(--surface-3); border-radius: var(--r); margin-bottom: 3px; }
+.roundResult { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; color: var(--text-muted); margin: 0 4px; min-width: 32px; text-align: center; }

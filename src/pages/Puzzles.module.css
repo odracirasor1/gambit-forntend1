@@ -1,0 +1,62 @@
+.page { padding-top: 56px; min-height: 100vh; background: var(--surface-2); }
+.container { max-width: 1200px; margin: 0 auto; padding: 48px 40px; }
+.layout { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; }
+
+.boardSide { }
+.boardLabel {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; font-weight: 600; color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+.turnDot { width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; box-shadow: var(--shadow-sm); }
+
+.sidebar { display: flex; flex-direction: column; gap: 20px; padding-top: 4px; }
+
+.ratingDisplay { }
+.ratingNum {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 56px; font-weight: 700;
+  color: var(--text-primary); letter-spacing: -2px;
+  display: block; line-height: 1;
+}
+.ratingLabel { font-size: 13px; color: var(--text-muted); font-weight: 500; margin-top: 4px; display: block; }
+
+.themes { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Feedback */
+.feedback {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px; border-radius: var(--r-lg);
+  border: 1.5px solid;
+  animation: feedIn 0.2s ease;
+}
+@keyframes feedIn { from { opacity:0; transform:scale(0.97); } }
+
+.feedbackDone    { background: #F0FAF0; border-color: var(--green); }
+.feedbackCorrect { background: #F0FAF0; border-color: var(--green-light); }
+.feedbackWrong   { background: var(--red-pale); border-color: var(--red); }
+
+.feedbackIcon { font-size: 24px; flex-shrink: 0; }
+.feedbackDone .feedbackIcon    { color: var(--green-darker); }
+.feedbackCorrect .feedbackIcon { color: var(--green); }
+.feedbackWrong .feedbackIcon   { color: var(--red); }
+
+.feedbackTitle { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+.feedbackSub   { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+.actions { display: flex; flex-direction: column; gap: 8px; }
+
+.sessionStats {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-lg);
+  padding: 16px;
+}
+.sessionTitle { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+.sessionRow { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--border-light); font-size: 14px; color: var(--text-secondary); }
+.sessionRow:last-child { border-bottom: none; }
+.greenVal { color: var(--green-dark); }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+}

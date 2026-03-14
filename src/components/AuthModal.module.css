@@ -1,0 +1,18 @@
+.wrap { }
+.logoArea { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.title { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700; color: var(--text-primary); }
+.sub { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+.tabs { display: flex; border: 1.5px solid var(--border); border-radius: var(--r); overflow: hidden; margin-bottom: 24px; }
+.tab { flex: 1; padding: 10px; font-size: 14px; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all var(--t); background: var(--surface-2); }
+.tabActive { background: var(--surface); color: var(--text-primary); }
+
+.form { display: flex; flex-direction: column; gap: 16px; }
+.error {
+  padding: 10px 14px; background: var(--red-pale);
+  border: 1px solid var(--red); border-radius: var(--r);
+  font-size: 13px; color: var(--red);
+}
+.switchLink { text-align: center; font-size: 13px; color: var(--text-muted); }
+.switchLink button { color: var(--green); font-weight: 600; cursor: pointer; font-size: 13px; }
+.switchLink button:hover { text-decoration: underline; }

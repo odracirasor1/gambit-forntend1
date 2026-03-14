@@ -1,0 +1,197 @@
+.page { padding-top: 56px; min-height: 100vh; background: var(--surface-2); }
+.container { max-width: 1200px; margin: 0 auto; padding: 48px 40px; }
+.layout { display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start; margin-top: 8px; }
+
+.boardColumn { display: flex; flex-direction: column; gap: 0; }
+
+.boardWithEval {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+/* ── Eval Bar ─────────────────────────────── */
+.evalBarWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 22px;
+  gap: 6px;
+}
+
+.evalBarOuter {
+  width: 22px;
+  height: 520px;
+  background: #1A1714;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.evalBarWhite {
+  background: linear-gradient(180deg, #F5F0E8 0%, #D8D0C0 100%);
+  width: 100%;
+  transition: height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 0 0 4px 4px;
+}
+
+.evalLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  text-align: center;
+}
+
+.evalMate { color: #E74C3C; }
+
+/* ── Engine Bar ──────────────────────────── */
+.engineBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface-dark);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-top: 10px;
+}
+
+.engineStatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.engineDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #555;
+}
+
+.engineDotReady { background: #4CAF50; }
+.engineDotThinking {
+  background: var(--gold);
+  animation: pulse 0.8s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.engineName {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+}
+
+.engineEval {
+  font-size: 12px;
+  color: var(--gold);
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(212,168,67,0.1);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.engineToggle {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.15s;
+}
+
+.engineOn { color: var(--gold); border-color: rgba(212,168,67,0.3); background: rgba(212,168,67,0.08); }
+
+
+.openingBanner {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  background: var(--green-pale); border: 1px solid var(--green-light);
+  border-radius: var(--r); margin-bottom: 8px;
+}
+.openingEco {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 700;
+  color: var(--green-deeper);
+  background: white; padding: 2px 7px; border-radius: 4px;
+  border: 1px solid var(--green-light);
+}
+.openingName { font-size: 14px; font-weight: 600; color: var(--green-deeper); }
+
+.navControls {
+  display: flex; align-items: center; gap: 6px;
+  margin-top: 12px;
+  background: var(--surface); border: 1px solid var(--border-light);
+  border-radius: var(--r-lg); padding: 10px 14px;
+  box-shadow: var(--shadow-sm);
+}
+.navBtn {
+  width: 36px; height: 36px;
+  border-radius: var(--r); font-size: 16px;
+  background: var(--surface-3); border: 1px solid var(--border-light);
+  cursor: pointer; transition: all var(--t);
+  display: flex; align-items: center; justify-content: center;
+}
+.navBtn:hover { background: var(--green-pale); border-color: var(--green-light); }
+.navPos {
+  flex: 1; text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--text-muted);
+}
+
+.sidebar { display: flex; flex-direction: column; gap: 16px; }
+
+.pgnSection {
+  background: var(--surface); border: 1px solid var(--border-light);
+  border-radius: var(--r-lg); padding: 16px; box-shadow: var(--shadow-sm);
+}
+.pgnLabel { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px; }
+.pgnInput {
+  width: 100%; padding: 10px 12px;
+  background: var(--surface-2); border: 1.5px solid var(--border);
+  border-radius: var(--r); color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.6;
+  resize: vertical; outline: none; transition: border-color var(--t);
+  min-height: 100px;
+}
+.pgnInput:focus { border-color: var(--green); }
+.pgnError { font-size: 12px; color: var(--red); margin-top: 6px; }
+.pgnActions { display: flex; gap: 8px; margin-top: 10px; }
+
+.fenSection {
+  background: var(--surface); border: 1px solid var(--border-light);
+  border-radius: var(--r-lg); padding: 14px; box-shadow: var(--shadow-sm);
+}
+.fenInput {
+  width: 100%; padding: 8px 10px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: var(--r); color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  outline: none;
+}
+
+.moveListWrap {
+  background: var(--surface); border: 1px solid var(--border-light);
+  border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-sm);
+  flex: 1;
+}
+.moveListTitle { padding: 12px 16px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); border-bottom: 1px solid var(--border-light); background: var(--surface-3); }
+.moveList { padding: 8px; max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 1px; }
+.moveEmpty { padding: 24px; text-align: center; color: var(--text-faint); font-size: 13px; font-style: italic; }
+.movePair { display: grid; grid-template-columns: 28px 1fr 1fr; gap: 3px; align-items: center; }
+.moveNum { font-size: 11px; color: var(--text-faint); font-family: 'JetBrains Mono', monospace; text-align: right; padding-right: 4px; }
+.moveSan { font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 4px 6px; border-radius: var(--r-sm); cursor: pointer; transition: background var(--t); color: var(--text-primary); text-align: left; }
+.moveSan:hover { background: var(--surface-3); }
+.moveActive { background: var(--green-pale) !important; color: var(--green-deeper); font-weight: 700; }
+
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }

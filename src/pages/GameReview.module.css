@@ -1,0 +1,60 @@
+.page { padding-top: 80px; min-height: 100vh; background: var(--bg); }
+.container { max-width: 960px; margin: 0 auto; padding: 24px 20px 64px; display: flex; flex-direction: column; gap: 16px; }
+.state { text-align: center; padding: 80px 20px; color: var(--text-muted); font-size: 16px; display: flex; gap: 12px; align-items: center; justify-content: center; }
+
+/* Header */
+.header { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.backBtn { background: none; border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; color: var(--text-muted); font-size: 13px; cursor: pointer; transition: color .12s; }
+.backBtn:hover { color: var(--text); }
+.headerMeta { display: flex; align-items: center; gap: 10px; flex: 1; flex-wrap: wrap; }
+.metaItem { font-size: 13px; color: var(--text-muted); }
+.flipBtn { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; color: var(--text); font-size: 16px; cursor: pointer; margin-left: auto; }
+
+/* Layout */
+.layout { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; }
+
+/* Board side */
+.boardSide { display: flex; flex-direction: column; gap: 8px; }
+.playerBar { display: flex; align-items: center; gap: 10px; padding: 6px 4px; }
+.playerName { font-weight: 600; color: var(--text); font-size: 14px; }
+.playerRating { font-size: 12px; color: var(--text-muted); }
+
+/* Nav controls */
+.navControls { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 0; }
+.navBtn { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 6px 14px; color: var(--text); font-size: 16px; cursor: pointer; transition: background .12s; }
+.navBtn:hover:not(:disabled) { background: var(--border); }
+.navBtn:disabled { opacity: .35; cursor: default; }
+.navPos { font-size: 13px; color: var(--text-muted); min-width: 60px; text-align: center; }
+.navHint { text-align: center; font-size: 11px; color: var(--text-muted); opacity: .6; }
+
+/* Sidebar */
+.sidebar { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+
+/* Result card */
+.resultCard { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.resultPlayers { display: flex; align-items: center; gap: 12px; }
+.resultPlayer { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text); flex: 1; }
+.resultScore { font-size: 18px; font-weight: 700; color: var(--text); white-space: nowrap; }
+.colorDot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid var(--border); flex-shrink: 0; }
+
+/* Move list */
+.moveList { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.moveListTitle { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .5px; }
+.moveListScroll { max-height: 380px; overflow-y: auto; display: flex; flex-direction: column; gap: 2px; }
+.noMoves { text-align: center; color: var(--text-muted); font-size: 13px; padding: 16px; }
+.movePair { display: flex; align-items: center; gap: 4px; border-radius: 4px; }
+.movePair:hover { background: rgba(255,255,255,.03); }
+.moveNum { font-size: 12px; color: var(--text-muted); min-width: 26px; text-align: right; padding-right: 4px; }
+.moveSan { background: none; border: none; padding: 4px 8px; border-radius: 4px; font-size: 14px; color: var(--text); cursor: pointer; min-width: 64px; text-align: left; transition: background .1s; font-family: inherit; }
+.moveSan:hover { background: rgba(118,150,86,.15); }
+.moveSanActive { background: var(--green) !important; color: #fff !important; }
+
+/* PGN */
+.pgnSection { display: flex; }
+.pgnToggle { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 8px 16px; color: var(--text-muted); font-size: 13px; cursor: pointer; width: 100%; transition: color .12s; }
+.pgnToggle:hover { color: var(--text); }
+
+@media (max-width: 700px) {
+  .layout { grid-template-columns: 1fr; }
+  .moveListScroll { max-height: 200px; }
+}

@@ -1,0 +1,254 @@
+/* ─── Button ──────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  border-radius: var(--r);
+  transition: all var(--t);
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  letter-spacing: 0.01em;
+}
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.fullWidth { width: 100%; }
+
+.btn-primary { background: var(--green); color: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+.btn-primary:not(:disabled):hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(74,124,89,0.4); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary { background: var(--surface-3); color: var(--text-primary); border: 1px solid var(--border); }
+.btn-secondary:not(:disabled):hover { background: var(--border-light); border-color: var(--border); }
+
+.btn-outline { background: transparent; color: var(--green); border: 1.5px solid var(--green); }
+.btn-outline:not(:disabled):hover { background: var(--green-pale); }
+
+.btn-ghost { background: transparent; color: var(--text-secondary); }
+.btn-ghost:not(:disabled):hover { background: var(--surface-3); color: var(--text-primary); }
+
+.btn-danger { background: var(--red); color: #fff; }
+.btn-danger:not(:disabled):hover { background: #a93226; }
+
+.btn-dark { background: var(--surface-dark); color: #fff; }
+.btn-dark:not(:disabled):hover { background: #3d3a37; }
+
+.btn-sm  { padding: 6px 14px; font-size: 13px; }
+.btn-md  { padding: 10px 20px; font-size: 14px; }
+.btn-lg  { padding: 13px 28px; font-size: 15px; }
+.btn-xl  { padding: 16px 36px; font-size: 16px; }
+
+.btnIcon { display: flex; align-items: center; }
+
+/* ─── Card ────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+}
+.pad-sm  { padding: 16px; }
+.pad-md  { padding: 24px; }
+.pad-lg  { padding: 32px; }
+.pad-none { padding: 0; }
+
+.cardHover { transition: all var(--t); }
+.cardHover:hover { box-shadow: var(--shadow); transform: translateY(-2px); border-color: var(--border); }
+.cardClickable { cursor: pointer; }
+
+/* ─── Badge ───────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600; border-radius: 20px;
+}
+.badge-sm  { font-size: 11px; padding: 2px 8px; }
+.badge-md  { font-size: 12px; padding: 3px 10px; }
+
+.badge-default  { background: var(--surface-3); color: var(--text-secondary); }
+.badge-green    { background: var(--green-pale); color: var(--green-deeper); }
+.badge-red      { background: var(--red-pale); color: var(--red); }
+.badge-gold     { background: var(--gold-pale); color: #8a6200; }
+.badge-blue     { background: var(--blue-pale); color: #1a6ea8; }
+.badge-dark     { background: var(--surface-dark); color: #fff; }
+
+.badgeDot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor;
+  animation: pulse 1.5s ease infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+/* ─── Form ────────────────────────────────────── */
+.formGroup { display: flex; flex-direction: column; gap: 6px; }
+
+.label {
+  font-size: 13px; font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+
+.input {
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r);
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  transition: border-color var(--t);
+  width: 100%;
+}
+.input:focus { border-color: var(--green); }
+.input::placeholder { color: var(--text-faint); }
+.inputError { border-color: var(--red) !important; }
+
+.fieldError { font-size: 12px; color: var(--red); }
+.fieldHint  { font-size: 12px; color: var(--text-muted); }
+
+/* ─── Modal ───────────────────────────────────── */
+.modalBackdrop {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(26,23,20,0.55);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  animation: backdropIn 0.18s ease;
+}
+@keyframes backdropIn { from { opacity:0; } }
+
+.modal {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.25);
+  animation: modalIn 0.22s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+  width: 100%;
+}
+@keyframes modalIn { from { opacity:0; transform:scale(0.96) translateY(8px); } }
+
+.modal-sm  { max-width: 380px; }
+.modal-md  { max-width: 480px; }
+.modal-lg  { max-width: 640px; }
+
+.modalHeader {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 28px 0;
+}
+.modalTitle {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--text-primary);
+}
+.modalClose {
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  color: var(--text-muted); font-size: 16px;
+  cursor: pointer; transition: all var(--t);
+}
+.modalClose:hover { background: var(--surface-3); color: var(--text-primary); }
+.modalBody { padding: 20px 28px 28px; }
+
+/* ─── Avatar ──────────────────────────────────── */
+.avatar {
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  color: white;
+  overflow: hidden;
+  flex-shrink: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ─── Tabs ────────────────────────────────────── */
+.tabs { display: flex; gap: 0; border-bottom: 2px solid var(--border-light); }
+.tab {
+  font-size: 13px; font-weight: 600;
+  padding: 10px 18px;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: all var(--t);
+  display: flex; align-items: center; gap: 6px;
+}
+.tab:hover { color: var(--text-primary); }
+.tabActive { color: var(--green); border-bottom-color: var(--green); }
+.tabCount {
+  font-size: 11px; font-weight: 700;
+  background: var(--surface-3); color: var(--text-muted);
+  padding: 1px 6px; border-radius: 10px;
+}
+
+/* ─── Spinner ─────────────────────────────────── */
+.spinner {
+  border-style: solid;
+  border-color: var(--border);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Section header ──────────────────────────── */
+.sectionHeader {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 28px;
+}
+.sectionEyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 6px;
+}
+.sectionTitle {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700; letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+/* ─── Divider ─────────────────────────────────── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  position: relative;
+  margin: 20px 0;
+}
+.dividerLabel {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: var(--surface); padding: 0 12px;
+  font-size: 12px; color: var(--text-muted);
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ─── Rating chip ─────────────────────────────── */
+.ratingChip {
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.ratingVal {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--text-primary);
+}
+.ratingDelta { font-size: 13px; font-weight: 600; }
+.deltaPos { color: var(--green-dark); }
+.deltaNeg { color: var(--red); }
+
+/* ─── Stat box ────────────────────────────────── */
+.statBox { display: flex; flex-direction: column; gap: 2px; }
+.statValue {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 32px; font-weight: 700;
+  color: var(--text-primary); letter-spacing: -1px;
+}
+.statLabel {
+  font-size: 12px; font-weight: 500;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;
+}
+.statSub { font-size: 11px; color: var(--text-faint); }

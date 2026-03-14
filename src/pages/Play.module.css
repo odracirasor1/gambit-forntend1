@@ -1,0 +1,724 @@
+.page {
+  padding-top: 56px;
+  min-height: 100vh;
+  background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 24px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* ─── Board column ──────────────────────────── */
+.boardCol {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Player bar */
+.playerBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--r-lg);
+  transition: all var(--t);
+  min-width: 0;
+}
+
+.playerActive {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px var(--green-dim);
+}
+
+.playerInfo { flex: 1; min-width: 0; }
+.playerName {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.playerRating {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.clock {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  background: var(--surface-3);
+  padding: 4px 14px;
+  border-radius: var(--r);
+  border: 1.5px solid var(--border-light);
+  min-width: 90px;
+  text-align: center;
+  transition: all var(--t);
+  flex-shrink: 0;
+}
+.clockActive {
+  background: var(--surface-dark);
+  color: #fff;
+  border-color: var(--surface-dark);
+}
+.clockLow { color: var(--red) !important; animation: blink 1s ease infinite; }
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.6;} }
+
+.boardWrap { position: relative; }
+
+/* Result overlay */
+.resultOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  border-radius: 2px;
+  animation: fadeIn 0.25s ease;
+}
+@keyframes fadeIn { from { opacity:0; } }
+
+.resultBox {
+  text-align: center;
+  padding: 36px;
+}
+.resultIcon { font-size: 52px; margin-bottom: 8px; }
+.resultTitle {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 40px; font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.resultReason {
+  font-size: 15px; color: var(--text-muted);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.resultRatings { margin-bottom: 24px; }
+.ratingDelta {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 32px; font-weight: 700;
+}
+.pos { color: var(--green-dark); }
+.neg { color: var(--red); }
+
+/* ─── Sidebar ───────────────────────────────── */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Setup panel */
+.setupPanel {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.setupTitle { margin-bottom: 16px; }
+.setupTitleText {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--text-primary);
+}
+
+.tcGroups { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+.tcGroup { }
+.tcCat {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 6px;
+  font-family: 'DM Sans', sans-serif;
+}
+.tcBtns { display: flex; flex-wrap: wrap; gap: 5px; }
+.tcBtn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; font-weight: 500;
+  padding: 6px 11px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r);
+  color: var(--text-secondary);
+  background: var(--surface-2);
+  cursor: pointer;
+  transition: all var(--t);
+}
+.tcBtn:hover { border-color: var(--tc-color); color: var(--tc-color); background: var(--surface); }
+.tcBtnActive {
+  border-color: var(--tc-color);
+  background: color-mix(in srgb, var(--tc-color) 10%, white);
+  color: var(--tc-color);
+  font-weight: 700;
+}
+
+/* Seek panel */
+.seekPanel {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-lg);
+  padding: 36px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow-sm);
+}
+.seekTime {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 36px; font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -1px;
+}
+.seekLabel { font-size: 13px; color: var(--text-muted); }
+
+/* Move list */
+.moveListWrap {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.moveListHeader {
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-light);
+  background: var(--surface-3);
+}
+.moveList {
+  padding: 8px;
+  height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.moveListEmpty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-faint);
+  font-size: 13px;
+  font-style: italic;
+}
+.movePair {
+  display: grid;
+  grid-template-columns: 28px 1fr 1fr;
+  gap: 3px;
+  align-items: center;
+}
+.moveNum {
+  font-size: 11px;
+  color: var(--text-faint);
+  font-family: 'JetBrains Mono', monospace;
+  text-align: right;
+  padding-right: 4px;
+}
+.moveSan {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  padding: 4px 6px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: background var(--t);
+  color: var(--text-primary);
+}
+.moveSan:hover { background: var(--surface-3); }
+.moveLast { background: var(--green-pale); color: var(--green-deeper); }
+
+/* Game controls */
+.gameControls {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-lg);
+  padding: 12px;
+  display: flex;
+  gap: 6px;
+  box-shadow: var(--shadow-sm);
+}
+.ctrlBtn {
+  flex: 1;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: var(--r);
+  background: var(--surface-3);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: all var(--t);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ctrlBtn:hover { background: var(--border-light); transform: scale(1.05); }
+
+/* ─── Engine mode styles ────────────────────── */
+
+/* Mode tabs */
+.modeTabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  background: var(--surface-3);
+  border-radius: var(--r);
+  padding: 3px;
+}
+.modeTab {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: calc(var(--r) - 1px);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--t);
+  white-space: nowrap;
+}
+.modeTab:hover { color: var(--text-secondary); }
+.modeTabActive {
+  background: var(--surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Engine config block */
+.engineConfig {
+  background: var(--surface-3);
+  border-radius: var(--r);
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-light);
+}
+
+.engineSection { margin-bottom: 14px; }
+.engineSection:last-child { margin-bottom: 0; }
+
+.engineSectionLabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+/* Level grid */
+.levelGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+.levelBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 6px 4px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  cursor: pointer;
+  transition: all var(--t);
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+.levelBtn:hover { border-color: var(--green); color: var(--green-dark); }
+.levelBtnActive {
+  border-color: var(--green);
+  background: var(--green-pale);
+  color: var(--green-deeper);
+  box-shadow: 0 0 0 2px var(--green-dim);
+}
+.levelNum {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+}
+.levelName {
+  font-size: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-align: center;
+  color: inherit;
+}
+
+/* Color selector */
+.colorSelect {
+  display: flex;
+  gap: 6px;
+}
+.colorBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all var(--t);
+}
+.colorBtn:hover { border-color: var(--green); color: var(--green-dark); }
+.colorBtnActive {
+  border-color: var(--green);
+  background: var(--green-pale);
+  color: var(--green-deeper);
+}
+.colorPiece { font-size: 18px; color: #1a1714; }
+.colorPieceBlack { font-size: 18px; color: #222; }
+
+/* Engine status */
+.engineStatus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-light);
+}
+.engineDot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.engineDotReady { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.engineDotLoading {
+  background: var(--gold);
+  animation: pulse 1.2s ease infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+.engineStatusText { font-size: 11px; color: var(--text-muted); }
+
+/* Engine badge (playing state) */
+.engineBadge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--r-lg);
+  padding: 12px 14px;
+  box-shadow: var(--shadow-sm);
+}
+.engineBadgeIcon { font-size: 22px; }
+.engineBadgeName {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.engineBadgeRating {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Thinking indicator */
+.thinkingDot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 4px;
+}
+.thinkingText {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.thinkingPulse {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 0.8s ease infinite;
+}
+
+/* Evaluation bar */
+.evalBar {
+  width: 22px;
+  height: 560px;
+  background: var(--surface-dark);
+  border-radius: var(--r);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  border: 1px solid var(--border);
+  align-self: center;
+}
+.evalWhite {
+  width: 100%;
+  background: #f0d9b5;
+  transition: height 0.5s ease;
+  min-height: 2px;
+}
+.evalLabel {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 9px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-muted);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ── Promotion dialog ──────────────────────────── */
+.promoOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  border-radius: 3px;
+}
+.promoBox {
+  background: var(--surface);
+  border: 2px solid var(--green);
+  border-radius: 12px;
+  padding: 20px 28px;
+  text-align: center;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.4);
+}
+.promoTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+.promoPieces {
+  display: flex;
+  gap: 8px;
+}
+.promoBtn {
+  width: 56px;
+  height: 56px;
+  font-size: 34px;
+  background: var(--surface-3);
+  border: 2px solid var(--border-light);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  line-height: 1;
+}
+.promoBtn:hover {
+  background: var(--green-pale);
+  border-color: var(--green);
+  transform: translateY(-2px);
+}
+
+/* ── Status banner (check / 50-move warning) ── */
+.statusBanner {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+.statusNeutral {
+  background: var(--surface-3);
+  color: var(--text-muted);
+}
+.statusCheck {
+  background: rgba(220,50,50,0.15);
+  color: #C0392B;
+  border: 1px solid rgba(220,50,50,0.3);
+  animation: checkFlash 0.4s ease;
+}
+.statusWarn {
+  background: var(--gold-pale);
+  color: #8A6A10;
+  border: 1px solid rgba(212,168,67,0.3);
+}
+@keyframes checkFlash {
+  0%   { opacity: 0; transform: scale(0.97); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ── Turn indicator ────────────────────────────── */
+.turnIndicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.turnPiece {
+  font-size: 22px;
+  line-height: 1;
+}
+.turnWhite { color: #1A1714; text-shadow: 0 0 8px rgba(255,255,255,0.8); }
+.turnBlack { color: #1A1714; }
+.turnLabel {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.fiftyBadge {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--gold-pale);
+  color: #8A6A10;
+  border-radius: 6px;
+  padding: 2px 8px;
+  border: 1px solid rgba(212,168,67,0.25);
+  cursor: help;
+}
+
+/* ── Move list header count ────────────────────── */
+.moveCount {
+  font-size: 11px;
+  color: var(--text-faint);
+  font-weight: 400;
+  margin-left: auto;
+}
+
+/* ── Local 2P info ─────────────────────────────── */
+.localInfo {
+  background: var(--green-pale);
+  border: 1px solid var(--green-light);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.localInfoIcon { font-size: 28px; margin-bottom: 6px; }
+.localInfo p {
+  font-size: 13px;
+  color: var(--green-deeper);
+  line-height: 1.5;
+}
+
+/* ── Mode tabs: add local tab ──────────────────── */
+.modeTabs {
+  display: flex;
+  gap: 0;
+  background: var(--surface-3);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+/* Re-declare to handle 3-tab layout */
+.modeTab {
+  flex: 1;
+  min-width: 80px;
+  padding: 8px 6px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--t);
+  white-space: nowrap;
+  font-family: 'DM Sans', sans-serif;
+}
+.modeTab:hover { color: var(--text-primary); }
+.modeTabActive {
+  background: var(--surface) !important;
+  color: var(--text-primary) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Open challenge link ────────────────────────────────── */
+.openChallenge {
+  margin-top: 4px;
+}
+.openChallengeLink {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.openChallengeUrl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--green-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: var(--green-dim);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.openChallengeActions {
+  display: flex;
+  gap: 6px;
+}
+.openChallengeBtn {
+  flex: 1;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all var(--t);
+}
+.openChallengeBtn:hover {
+  background: var(--border-light);
+  color: var(--text-primary);
+}
+.openChallengeHint {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
